@@ -31,7 +31,7 @@ public class DatasetController {
     @GetMapping
     @Operation(summary = "Get all datasets", description = "Get paginated list of datasets")
     public ResponseEntity<PageResponse<DatasetResponse>> getAllDatasets(
-            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(datasetService.getAllDatasets(page, size));
     }

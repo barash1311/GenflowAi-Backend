@@ -24,7 +24,7 @@ public class PredictionJobController {
     @GetMapping("/{id}")
     @Operation(summary = "Get job status", description = "Get prediction job status by ID")
     public ResponseEntity<PredictionJobResponse> getJobStatus(
-            @PathVariable UUID id) {
+            @PathVariable("id") UUID id) {
         return ResponseEntity.ok(predictionService.getJobStatus(id));
     }
 }

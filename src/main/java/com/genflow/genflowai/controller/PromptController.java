@@ -30,30 +30,30 @@ public class PromptController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get prompt by ID", description = "Get prompt details by ID")
-    public ResponseEntity<PromptResponse> getPrompt(@PathVariable UUID id) {
+    public ResponseEntity<PromptResponse> getPrompt(@PathVariable("id") UUID id) {
         return ResponseEntity.ok(promptService.getPromptById(id));
     }
 
     @GetMapping
     @Operation(summary = "Get all prompts", description = "Get paginated list of prompts")
     public ResponseEntity<PageResponse<PromptResponse>> getAllPrompts(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size) {
         return ResponseEntity.ok(promptService.getAllPrompts(page, size));
     }
 
     @GetMapping("/dataset/{datasetId}")
     @Operation(summary = "Get prompts by dataset", description = "Get paginated list of prompts for a dataset")
     public ResponseEntity<PageResponse<PromptResponse>> getPromptsByDataset(
-            @PathVariable UUID datasetId,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @PathVariable("datasetId") UUID datasetId,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size) {
         return ResponseEntity.ok(promptService.getPromptsByDataset(datasetId, page, size));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete prompt", description = "Delete prompt by ID")
-    public ResponseEntity<Void> deletePrompt(@PathVariable UUID id) {
+    public ResponseEntity<Void> deletePrompt(@PathVariable("id") UUID id) {
         promptService.deletePrompt(id);
         return ResponseEntity.noContent().build();
     }

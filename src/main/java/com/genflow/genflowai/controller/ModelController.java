@@ -30,28 +30,28 @@ public class ModelController {
     @GetMapping
     @Operation(summary = "Get all models", description = "Get paginated list of models")
     public ResponseEntity<PageResponse<ModelResponse>> getAllModels(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size) {
         return ResponseEntity.ok(modelService.getAllModels(page, size));
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get model by ID", description = "Get model details by ID")
-    public ResponseEntity<ModelResponse> getModel(@PathVariable UUID id) {
+    public ResponseEntity<ModelResponse> getModel(@PathVariable("id") UUID id) {
         return ResponseEntity.ok(modelService.getModelById(id));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update model", description = "Update model information (ADMIN only)")
     public ResponseEntity<ModelResponse> updateModel(
-            @PathVariable UUID id,
+            @PathVariable("id") UUID id,
             @RequestBody ModelRequest request) {
         return ResponseEntity.ok(modelService.updateModel(id, request));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete model", description = "Delete model by ID (ADMIN only)")
-    public ResponseEntity<Void> deleteModel(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteModel(@PathVariable("id") UUID id) {
         modelService.deleteModel(id);
         return ResponseEntity.noContent().build();
     }

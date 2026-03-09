@@ -36,29 +36,29 @@ public class UserController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get user by ID", description = "Get user profile by ID")
-    public ResponseEntity<UserResponse> getUserById(@PathVariable UUID id) {
+    public ResponseEntity<UserResponse> getUserById(@PathVariable("id") UUID id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @GetMapping
     @Operation(summary = "Get all users", description = "Get paginated list of users (ADMIN only)")
     public ResponseEntity<PageResponse<UserResponse>> getAllUsers(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size) {
         return ResponseEntity.ok(userService.getAllUsers(page, size));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update user", description = "Update user information")
     public ResponseEntity<UserResponse> updateUser(
-            @PathVariable UUID id,
+            @PathVariable("id") UUID id,
             @RequestBody UserRequest request) {
         return ResponseEntity.ok(userService.updateUser(id, request));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete user", description = "Delete user by ID (ADMIN only)")
-    public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable("id") UUID id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }

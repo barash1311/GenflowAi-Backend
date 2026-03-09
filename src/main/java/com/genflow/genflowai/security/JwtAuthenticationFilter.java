@@ -45,34 +45,38 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        // 2️⃣ Extract token
-        jwt = authHeader.substring(SecurityConstants.TOKEN_PREFIX.length());
-        userEmail = jwtService.extractUsername(jwt);
+        // 2️⃣ Extract token and 3️⃣ Authenticate if not already authenticated
+        try {
+            jwt = authHeader.substring(SecurityConstants.TOKEN_PREFIX.length());
+            userEmail = jwtService.extractUsername(jwt);
 
-        // 3️⃣ Authenticate if not already authenticated
-        if (userEmail != null &&
-                SecurityContextHolder.getContext().getAuthentication() == null) {
+            if (userEmail != null &&
+                    SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            UserDetails userDetails =
-                    userDetailsService.loadUserByUsername(userEmail);
+                UserDetails userDetails =
+                        userDetailsService.loadUserByUsername(userEmail);
 
-            if (jwtService.isTokenValid(jwt, userDetails)) {
+                if (jwtService.isTokenValid(jwt, userDetails)) {
 
-                UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(
-                                userDetails,
-                                null,
-                                userDetails.getAuthorities()
-                        );
+                    UsernamePasswordAuthenticationToken authToken =
+                            new UsernamePasswordAuthenticationToken(
+                                    userDetails,
+                                    null,
+                                    userDetails.getAuthorities()
+                            );
 
-                authToken.setDetails(
-                        new WebAuthenticationDetailsSource().buildDetails(request)
-                );
+                    authToken.setDetails(
+                            new WebAuthenticationDetailsSource().buildDetails(request)
+                    );
 
-                SecurityContextHolder
-                        .getContext()
-                        .setAuthentication(authToken);
+                    SecurityContextHolder
+                            .getContext()
+                            .setAuthentication(authToken);
+                }
             }
+        } catch (Exception e) {
+            // Logically ignore invalid tokens so they don't break public endpoints.
+            // Protected endpoints will naturally block the anonymous user later.
         }
 
         // 4️⃣ Continue filter chain
