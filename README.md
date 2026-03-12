@@ -122,17 +122,3 @@ The Python service **never writes directly to the database**.
 
 ---
 
-## Repository Structure
-
-```
-backend/
- ├── controller/
- ├── service/
- ├── repository/
- ├── entity/
- ├── dto/
- ├── security/
- └── config/
-```
-
----
