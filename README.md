@@ -98,27 +98,3 @@ Each prediction can be traced back to:
 
 The Python service **never writes directly to the database**.
 
----
-
-## Security
-
-* JWT-based authentication
-* Role-based access control
-* Backend-only database access
-* Clear separation between services
-
----
-
-## 🚀 Getting Started (Backend)
-
-1. Clone the repository
-2. Configure PostgreSQL connection in `application.yml`
-3. Initialize the database schema
-4. Run the Spring Boot application
-
-```bash
-./mvnw spring-boot:run
-```
-
----
-
