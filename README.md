@@ -85,16 +85,5 @@ Each prediction can be traced back to:
 * the prompt
 * the model version
 
----
 
-## Prediction Workflow
-
-1. User submits a prompt
-2. Backend stores the prompt in the database
-3. A prediction job is created with status `PENDING`
-4. Backend calls the Python ML API
-5. Python service returns prediction results
-6. Backend stores results and updates job status
-
-The Python service **never writes directly to the database**.
 
