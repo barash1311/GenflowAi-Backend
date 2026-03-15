@@ -65,25 +65,7 @@ Frontend → Java Backend → Python ML Service → Java Backend → Database
 
 ---
 
-## Database Design
 
-The backend uses a normalized schema focused on traceability and reproducibility.
-
-Main tables:
-
-* `users` – authentication and roles
-* `datasets` – dataset metadata (raw data stored separately)
-* `models` – ML model versions and metrics
-* `prompts` – user input prompts
-* `prediction_jobs` – async job tracking
-* `predictions` – ML outputs stored as JSON
-
-Each prediction can be traced back to:
-
-* the user
-* the dataset
-* the prompt
-* the model version
 
 
 
