@@ -54,17 +54,6 @@ Frontend → Java Backend → Python ML Service → Java Backend → Database
 
 **ML Layer**
 
-* Python
-* FastAPI / Flask (for prediction API)
-
-**Other**
-
-* UUID-based identifiers
-* RESTful APIs
-* Async-safe job handling
-
----
-
 
 
 
