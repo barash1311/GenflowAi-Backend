@@ -44,12 +44,7 @@ Frontend → Java Backend → Python ML Service → Java Backend → Database
 
 * Java 17+
 * Spring Boot
-* Spring Security (JWT)
-* Spring Data JPA / Hibernate
-
-**Database**
-
-
+* Spring Sec
 
 
 
