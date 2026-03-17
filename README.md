@@ -49,10 +49,7 @@ Frontend → Java Backend → Python ML Service → Java Backend → Database
 
 **Database**
 
-* PostgreSQL
-* JSONB for prediction results
 
-**ML Layer**
 
 
 
