@@ -38,13 +38,7 @@ Frontend → Java Backend → Python ML Service → Java Backend → Database
 
 ---
 
-## Tech Stack
 
-**Backend**
-
-* Java 17+
-* Spring Boot
-* Spring Sec
 
 
 
