@@ -43,4 +43,3 @@ Frontend → Java Backend → Python ML Service → Java Backend → Database
 
 
 
-

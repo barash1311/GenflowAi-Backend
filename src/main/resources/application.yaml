@@ -32,6 +32,9 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
 
+
+
+
 security:
   jwt:
     secret: your-very-long-256-bit-secret-key-here-change-in-production-environment
