@@ -24,20 +24,6 @@ The backend is intentionally designed to be:
 
 ---
 
-## Architecture
-
-**High-level flow:**
-
-Frontend → Java Backend → Python ML Service → Java Backend → Database
-
-**Responsibilities split:**
-
-* **Java (Spring Boot):** Authentication, prompt management, job tracking, database persistence
-* **Python:** Model loading, prediction logic, result generation
-* **PostgreSQL:** Persistent storage for users, prompts, models, and predictions
-
----
-
 
 
 
