@@ -4,25 +4,6 @@ GeoFlow AI is a backend system designed to manage datasets, user prompts, and ma
 
 This repository focuses on the **Java Spring Boot backend** and its integration with PostgreSQL and a Python-based ML service.
 
----
-
-## Project Overview
-
-The core idea behind GeoFlow AI is simple:
-
-* Users interact with the system through prompts
-* Prompts are linked to datasets
-* The backend sends validated requests to an ML service
-* Predictions are stored and tracked for reproducibility
-
-The backend is intentionally designed to be:
-
-* Secure
-* Asynchronous
-* Traceable
-* Easy to extend
-
----
 
 
 
